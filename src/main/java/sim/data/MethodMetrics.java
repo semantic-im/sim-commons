@@ -16,7 +16,6 @@
 
 package sim.data;
 
-import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -25,7 +24,7 @@ import java.util.Map;
  * @author mcq
  * 
  */
-public interface MethodMetrics extends Serializable {
+public interface MethodMetrics extends Metrics {
 	/**
 	 * @return method name where the metrics are collected
 	 */

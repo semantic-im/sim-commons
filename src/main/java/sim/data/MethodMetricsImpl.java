@@ -27,6 +27,9 @@ import java.util.Map;
  */
 public class MethodMetricsImpl implements MethodMetrics {
 	private static final long serialVersionUID = 1L;
+	
+	private long creationTime;
+	
 	private String methodName;
 	private String className;
 	private Map<String, Object> context = new HashMap<String, Object>();
@@ -48,12 +51,22 @@ public class MethodMetricsImpl implements MethodMetrics {
 	private long processTotalCpuTime;
 
 	public MethodMetricsImpl(String className, String methodName) {
+		this.creationTime = System.currentTimeMillis();
 		this.methodName = methodName;
 		this.className = className;
 	}
 
 	public void set(String key, Object value) {
 		context.put(key, value);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see sim.data.Metrics#getCreationTime()
+	 */
+	@Override
+	public long getCreationTime() {
+		return creationTime;
 	}
 
 	@Override
