@@ -18,7 +18,7 @@ package sim.data;
 
 /**
  * @author vroman
- *
+ * 
  */
 public class SystemMetricsImpl implements SystemMetrics {
 
@@ -28,7 +28,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 	private static final long serialVersionUID = -7765634923723290400L;
 
 	private long creationTime;
-	
+
 	private double systemLoadAverage;
 	private long totalSystemFreeMemory;
 	private long totalSystemUsedMemory;
@@ -50,11 +50,10 @@ public class SystemMetricsImpl implements SystemMetrics {
 	private double irq;
 
 	public SystemMetricsImpl(double systemLoadAverage, long totalSystemFreeMemory,
-			long totalSystemUsedMemory, long totalSystemUsedSwap,
-			long systemOpenFileDescriptors, long swapIn, long swapOut,
-			long ioRead, long ioWrite, double userPerc, double sysPerc,
-			double idlePerc, double waitPerc, double irqPerc, double user,
-			double sys, double idle, double wait, double irq) {
+			long totalSystemUsedMemory, long totalSystemUsedSwap, long systemOpenFileDescriptors,
+			long swapIn, long swapOut, long ioRead, long ioWrite, double userPerc, double sysPerc,
+			double idlePerc, double waitPerc, double irqPerc, double user, double sys, double idle,
+			double wait, double irq) {
 		this.creationTime = System.currentTimeMillis();
 		this.systemLoadAverage = systemLoadAverage;
 		this.totalSystemFreeMemory = totalSystemFreeMemory;
@@ -84,6 +83,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getSystemLoadAverage()
 	 */
 	@Override
@@ -93,6 +93,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getTotalSystemFreeMemory()
 	 */
 	@Override
@@ -102,6 +103,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getTotalSystemUsedMemory()
 	 */
 	@Override
@@ -111,6 +113,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getTotalSystemUsedSwap()
 	 */
 	@Override
@@ -120,6 +123,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getSystemOpenFileDescriptors()
 	 */
 	@Override
@@ -129,6 +133,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getSwapIn()
 	 */
 	@Override
@@ -138,6 +143,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getSwapOut()
 	 */
 	@Override
@@ -147,6 +153,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getIORead()
 	 */
 	@Override
@@ -156,6 +163,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getIOWrite()
 	 */
 	@Override
@@ -165,6 +173,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getUserPerc()
 	 */
 	@Override
@@ -174,6 +183,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getSysPerc()
 	 */
 	@Override
@@ -183,6 +193,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getIdlePerc()
 	 */
 	@Override
@@ -192,6 +203,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getWaitPerc()
 	 */
 	@Override
@@ -201,6 +213,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getIrqPerc()
 	 */
 	@Override
@@ -210,6 +223,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getUser()
 	 */
 	@Override
@@ -219,6 +233,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getSys()
 	 */
 	@Override
@@ -228,6 +243,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getIdle()
 	 */
 	@Override
@@ -237,6 +253,7 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getWait()
 	 */
 	@Override
@@ -246,11 +263,59 @@ public class SystemMetricsImpl implements SystemMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.SystemMetrics#getIrq()
 	 */
 	@Override
 	public double getIrq() {
 		return irq;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SystemMetricsImpl [creationTime=");
+		builder.append(creationTime);
+		builder.append(", systemLoadAverage=");
+		builder.append(systemLoadAverage);
+		builder.append(", totalSystemFreeMemory=");
+		builder.append(totalSystemFreeMemory);
+		builder.append(", totalSystemUsedMemory=");
+		builder.append(totalSystemUsedMemory);
+		builder.append(", totalSystemUsedSwap=");
+		builder.append(totalSystemUsedSwap);
+		builder.append(", systemOpenFileDescriptors=");
+		builder.append(systemOpenFileDescriptors);
+		builder.append(", swapIn=");
+		builder.append(swapIn);
+		builder.append(", swapOut=");
+		builder.append(swapOut);
+		builder.append(", ioRead=");
+		builder.append(ioRead);
+		builder.append(", ioWrite=");
+		builder.append(ioWrite);
+		builder.append(", userPerc=");
+		builder.append(userPerc);
+		builder.append(", sysPerc=");
+		builder.append(sysPerc);
+		builder.append(", idlePerc=");
+		builder.append(idlePerc);
+		builder.append(", waitPerc=");
+		builder.append(waitPerc);
+		builder.append(", irqPerc=");
+		builder.append(irqPerc);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append(", sys=");
+		builder.append(sys);
+		builder.append(", idle=");
+		builder.append(idle);
+		builder.append(", wait=");
+		builder.append(wait);
+		builder.append(", irq=");
+		builder.append(irq);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }
