@@ -27,9 +27,9 @@ import java.util.Map;
  */
 public class MethodMetricsImpl implements MethodMetrics {
 	private static final long serialVersionUID = 1L;
-	
+
 	private long creationTime;
-	
+
 	private String methodName;
 	private String className;
 	private Map<String, Object> context = new HashMap<String, Object>();
@@ -62,6 +62,7 @@ public class MethodMetricsImpl implements MethodMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see sim.data.Metrics#getCreationTime()
 	 */
 	@Override
@@ -231,7 +232,9 @@ public class MethodMetricsImpl implements MethodMetrics {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MethodMetricsImpl [methodName=");
+		builder.append("MethodMetricsImpl [creationTime=");
+		builder.append(creationTime);
+		builder.append(", methodName=");
 		builder.append(methodName);
 		builder.append(", className=");
 		builder.append(className);
