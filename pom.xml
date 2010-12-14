@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<artifactId>sim-pom</artifactId>
 		<groupId>sim</groupId>
@@ -7,18 +7,29 @@
 		<relativePath>../sim-pom/pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-  <artifactId>sim-commons</artifactId>
-  <name>sim-commons</name>
-  <description>Semantic Instrumentation and Monitoring - Commons Module</description>
-  <url>http://sim.softgress.com</url>
-  <organization>
-  	<name>Softgress</name>
-  	<url>http://www.softgress.com</url>
-  </organization>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
+	<artifactId>sim-commons</artifactId>
+	<name>sim-commons</name>
+	<description>Semantic Instrumentation and Monitoring - Commons Module</description>
+	<url>http://sim.softgress.com</url>
+	<organization>
+		<name>Softgress</name>
+		<url>http://www.softgress.com</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<url>https://github.com/semantic-im/sim-commons</url>
+		<connection>scm:git:git://github.com/semantic-im/sim-commons.git</connection>
+	</scm>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
 </project>
