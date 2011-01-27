@@ -20,7 +20,7 @@ package sim.data;
  * @author vroman
  * 
  */
-public class SystemMetricsImpl implements SystemMetrics {
+public final class SystemMetricsImpl implements SystemMetrics {
 
 	/**
 	 * serialVersionUID

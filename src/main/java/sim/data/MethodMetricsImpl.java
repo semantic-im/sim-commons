@@ -16,23 +16,20 @@
 
 package sim.data;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Implementation for {@link MethodMetrics}.
  * 
  * @author mcq
  * 
  */
-public class MethodMetricsImpl implements MethodMetrics {
+public final class MethodMetricsImpl implements MethodMetrics {
 	private static final long serialVersionUID = 1L;
 
 	private long creationTime;
 
 	private String methodName;
 	private String className;
-	private Map<String, Object> context = new HashMap<String, Object>();
+	private Context context = new Context();
 	private String exception;
 	private boolean endedWithError = false;
 	private long beginExecutionTime;
@@ -56,8 +53,12 @@ public class MethodMetricsImpl implements MethodMetrics {
 		this.className = className;
 	}
 
-	public void set(String key, Object value) {
+	public void addToContext(String key, Object value) {
 		context.put(key, value);
+	}
+
+	public void addToContext(Context context) {
+		this.context.putAll(context);
 	}
 
 	/*
@@ -81,7 +82,7 @@ public class MethodMetricsImpl implements MethodMetrics {
 	}
 
 	@Override
-	public Map<String, Object> getContext() {
+	public Context getContext() {
 		return context;
 	}
 

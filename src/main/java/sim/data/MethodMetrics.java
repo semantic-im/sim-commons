@@ -16,8 +16,6 @@
 
 package sim.data;
 
-import java.util.Map;
-
 /**
  * Holds information about a method execution.
  * 
@@ -38,7 +36,7 @@ public interface MethodMetrics extends Metrics {
 	/**
 	 * @return contains method specific information
 	 */
-	public Map<String, Object> getContext();
+	public Context getContext();
 
 	/**
 	 * @return if the method ended with an exception this returns the string
