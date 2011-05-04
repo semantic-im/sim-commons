@@ -29,7 +29,7 @@ public final class MethodMetricsImpl implements MethodMetrics {
 
 	private String methodName;
 	private String className;
-	private Context context = new Context();
+	private Context context;
 	private String exception;
 	private boolean endedWithError = false;
 	private long beginExecutionTime;
@@ -51,14 +51,6 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		this.creationTime = System.currentTimeMillis();
 		this.methodName = methodName;
 		this.className = className;
-	}
-
-	public void addToContext(String key, Object value) {
-		context.put(key, value);
-	}
-
-	public void addToContext(Context context) {
-		this.context.putAll(context);
 	}
 
 	/*
@@ -228,6 +220,10 @@ public final class MethodMetricsImpl implements MethodMetrics {
 
 	public void setProcessTotalCpuTime(long processTotalCpuTime) {
 		this.processTotalCpuTime = processTotalCpuTime;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
 	}
 
 	@Override
