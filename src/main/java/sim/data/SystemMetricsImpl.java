@@ -28,7 +28,8 @@ public final class SystemMetricsImpl implements SystemMetrics {
 	private static final long serialVersionUID = -7765634923723290400L;
 
 	private long creationTime;
-
+	private SystemId systemId;
+	
 	private double systemLoadAverage;
 	private long totalSystemFreeMemory;
 	private long totalSystemUsedMemory;
@@ -49,12 +50,13 @@ public final class SystemMetricsImpl implements SystemMetrics {
 	private double wait;
 	private double irq;
 
-	public SystemMetricsImpl(double systemLoadAverage, long totalSystemFreeMemory,
+	public SystemMetricsImpl(SystemId systemId, double systemLoadAverage, long totalSystemFreeMemory,
 			long totalSystemUsedMemory, long totalSystemUsedSwap, long systemOpenFileDescriptors,
 			long swapIn, long swapOut, long ioRead, long ioWrite, double userPerc, double sysPerc,
 			double idlePerc, double waitPerc, double irqPerc, double user, double sys, double idle,
 			double wait, double irq) {
 		this.creationTime = System.currentTimeMillis();
+		this.systemId = systemId;
 		this.systemLoadAverage = systemLoadAverage;
 		this.totalSystemFreeMemory = totalSystemFreeMemory;
 		this.totalSystemUsedMemory = totalSystemUsedMemory;
@@ -83,8 +85,7 @@ public final class SystemMetricsImpl implements SystemMetrics {
 
 	@Override
 	public SystemId getSystemId() {
-		// TODO Auto-generated method stub
-		return null;
+		return systemId;
 	}
 
 	/*
@@ -282,6 +283,8 @@ public final class SystemMetricsImpl implements SystemMetrics {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SystemMetricsImpl [creationTime=");
 		builder.append(creationTime);
+		builder.append(", ");
+		builder.append(systemId);
 		builder.append(", systemLoadAverage=");
 		builder.append(systemLoadAverage);
 		builder.append(", totalSystemFreeMemory=");

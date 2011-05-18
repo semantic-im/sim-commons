@@ -37,20 +37,58 @@ public class ApplicationId implements Serializable {
 	/*application name*/
 	private String name;
 	
+	public ApplicationId(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof ApplicationId))
+			return false;
+		ApplicationId other = (ApplicationId) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("AppId [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	/**
+	 * 
+	 * @return id
+	 */
 	public String getId() {
 		return id;
 	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
+
+	/**
+	 * 
+	 * @return name
+	 */
 	public String getName() {
 		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 }

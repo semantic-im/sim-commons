@@ -26,7 +26,9 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	private static final long serialVersionUID = 1L;
 
 	private long creationTime;
-
+	private ApplicationId applicationId;
+	private SystemId systemId;
+	
 	private String methodName;
 	private String className;
 	private Context context;
@@ -47,22 +49,27 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	private long threadGccTime;
 	private long processTotalCpuTime;
 
-	public MethodMetricsImpl(String className, String methodName) {
+	public MethodMetricsImpl(ApplicationId applicationId, String className, String methodName) {
 		this.creationTime = System.currentTimeMillis();
+		this.applicationId = applicationId;
 		this.methodName = methodName;
 		this.className = className;
 	}
 
 	@Override
 	public ApplicationId getApplicationId() {
-		// TODO Auto-generated method stub
-		return null;
+		return applicationId;
 	}
 
 	@Override
 	public SystemId getSystemId() {
-		// TODO Auto-generated method stub
-		return null;
+		return systemId;
+	}
+
+
+	@Override
+	public void setSystemId(SystemId systemId) {
+		this.systemId = systemId;
 	}
 
 	/*
@@ -243,6 +250,10 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		StringBuilder builder = new StringBuilder();
 		builder.append("MethodMetricsImpl [creationTime=");
 		builder.append(creationTime);
+		builder.append(", ");
+		builder.append(applicationId);
+		builder.append(", ");
+		builder.append(systemId);
 		builder.append(", methodName=");
 		builder.append(methodName);
 		builder.append(", className=");

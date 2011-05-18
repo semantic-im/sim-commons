@@ -24,9 +24,23 @@ package sim.data;
  */
 public interface MethodMetrics extends Metrics {
 	
+	/**
+	 * @return the application id
+	 */
 	public ApplicationId getApplicationId();
 	
+	/**
+	 * @return ths system id
+	 */
 	public SystemId getSystemId();
+
+	/**
+	 * Sets the system id
+	 * Setter needed because we can not set the system id when the method metrics is created. The agent will set this value.
+	 * 
+	 * @param systemId the system id
+	 */
+	public void setSystemId(SystemId systemId);
 	
 	/**
 	 * @return method name where the metrics are collected
