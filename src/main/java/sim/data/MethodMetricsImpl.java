@@ -53,6 +53,18 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		this.className = className;
 	}
 
+	@Override
+	public ApplicationId getApplicationId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SystemId getSystemId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

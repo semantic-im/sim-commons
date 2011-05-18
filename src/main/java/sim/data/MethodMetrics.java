@@ -23,6 +23,11 @@ package sim.data;
  * 
  */
 public interface MethodMetrics extends Metrics {
+	
+	public ApplicationId getApplicationId();
+	
+	public SystemId getSystemId();
+	
 	/**
 	 * @return method name where the metrics are collected
 	 */

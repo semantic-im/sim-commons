@@ -25,6 +25,8 @@ package sim.data;
  */
 public interface SystemMetrics extends Metrics {
 	
+	public SystemId getSystemId();
+	
 	/**
 	 * @return returns system load percentage
 	 */

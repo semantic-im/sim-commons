@@ -81,6 +81,12 @@ public final class SystemMetricsImpl implements SystemMetrics {
 		return creationTime;
 	}
 
+	@Override
+	public SystemId getSystemId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
