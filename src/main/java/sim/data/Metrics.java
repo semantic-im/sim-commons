@@ -24,6 +24,8 @@ import java.io.Serializable;
  */
 public interface Metrics extends Serializable {
 
+	public void accept(MetricsVisitor visitor);
+	
 	/**
 	 * @return returns the time in millis when the metrics was created
 	 */

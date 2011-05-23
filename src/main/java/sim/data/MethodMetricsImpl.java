@@ -57,6 +57,11 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	}
 
 	@Override
+	public void accept(MetricsVisitor visitor) {
+		visitor.visit(this);
+	}
+
+	@Override
 	public ApplicationId getApplicationId() {
 		return applicationId;
 	}

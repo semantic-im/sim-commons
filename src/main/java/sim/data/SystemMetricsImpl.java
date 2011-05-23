@@ -79,6 +79,11 @@ public final class SystemMetricsImpl implements SystemMetrics {
 	}
 
 	@Override
+	public void accept(MetricsVisitor visitor) {
+		visitor.visit(this);
+	}
+
+	@Override
 	public long getCreationTime() {
 		return creationTime;
 	}
