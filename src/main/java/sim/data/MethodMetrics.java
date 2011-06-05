@@ -18,30 +18,57 @@ package sim.data;
 
 /**
  * Holds information about a method execution.
+ * <p>
+ * List of collected metrics and their explanation:
+ * <ul>
+ * <li>wall clock time - elapsed time between method entry and method exit (ms)</li>
+ * <li>thread user cpu time - user CPU time spent by current thread executing
+ * this method (ms)</li>
+ * <li>thread system cpu time - system CPU time spent by current thread
+ * executing this method (ms)</li>
+ * <li>thread total cpu time - total CPU time spent by current thread executing
+ * this method (user time + system time) (ms)</li>
+ * <li>process total cpu time - total CPU time spent by current process (all
+ * threads from the application) executing this method (ms)</li>
+ * <li>thread count - how many threads did this method invocation create (count)
+ * </li>
+ * <li>thread block count - the total number of times that the current thread
+ * executing this method entered the BLOCKED state (count)</li>
+ * <li>thread block time - the total accumulated time the current thread
+ * executing this method has been in the BLOCKED (ms)</li>
+ * <li>thread wait count - the number of times that the current thread executing
+ * this method has been in the WAITING or TIMED_WAITING state (count)</li>
+ * <li>thread wait time - the total accumulated time the current thread
+ * executing this method has been in the WAITING or TIMED_WAITING state (ms)</li>
+ * <li>gcc count - total number of collections that have occurred while
+ * executing this method</li>
+ * <li>gcc time - approximate accumulated collection elapsed time in
+ * milliseconds while executing this method</li>
+ * </ul>
  * 
  * @author mcq
  * 
  */
 public interface MethodMetrics extends Metrics {
-	
+
 	/**
 	 * @return the application id
 	 */
 	public ApplicationId getApplicationId();
-	
+
 	/**
 	 * @return ths system id
 	 */
 	public SystemId getSystemId();
 
 	/**
-	 * Sets the system id
-	 * Setter needed because we can not set the system id when the method metrics is created. The agent will set this value.
+	 * Sets the system id Setter needed because we can not set the system id
+	 * when the method metrics is created. The agent will set this value.
 	 * 
 	 * @param systemId the system id
 	 */
 	public void setSystemId(SystemId systemId);
-	
+
 	/**
 	 * @return method name where the metrics are collected
 	 */
