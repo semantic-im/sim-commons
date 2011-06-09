@@ -28,10 +28,10 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	private long creationTime;
 	private ApplicationId applicationId;
 	private SystemId systemId;
-	
+
 	private String methodName;
 	private String className;
-	private Context context;
+	private String contextId;
 	private String exception;
 	private boolean endedWithError = false;
 	private long beginExecutionTime;
@@ -71,7 +71,6 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		return systemId;
 	}
 
-
 	@Override
 	public void setSystemId(SystemId systemId) {
 		this.systemId = systemId;
@@ -79,7 +78,6 @@ public final class MethodMetricsImpl implements MethodMetrics {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see sim.data.Metrics#getCreationTime()
 	 */
 	@Override
@@ -98,8 +96,8 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	}
 
 	@Override
-	public Context getContext() {
-		return context;
+	public String getContextId() {
+		return contextId;
 	}
 
 	@Override
@@ -246,8 +244,8 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		this.processTotalCpuTime = processTotalCpuTime;
 	}
 
-	public void setContext(Context context) {
-		this.context = context;
+	public void setContextId(String contextId) {
+		this.contextId = contextId;
 	}
 
 	@Override
@@ -263,8 +261,8 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		builder.append(methodName);
 		builder.append(", className=");
 		builder.append(className);
-		builder.append(", context=");
-		builder.append(context);
+		builder.append(", contextId=");
+		builder.append(contextId);
 		builder.append(", exception=");
 		builder.append(exception);
 		builder.append(", endedWithError=");

@@ -62,8 +62,10 @@ public interface MethodMetrics extends Metrics {
 	public SystemId getSystemId();
 
 	/**
-	 * Sets the system id Setter needed because we can not set the system id
-	 * when the method metrics is created. The agent will set this value.
+	 * Sets the system id.
+	 * <p>
+	 * Setter needed because we can not set the system id when the method
+	 * metrics is created. The agent will set this value.
 	 * 
 	 * @param systemId the system id
 	 */
@@ -80,9 +82,9 @@ public interface MethodMetrics extends Metrics {
 	public String getClassName();
 
 	/**
-	 * @return contains method specific information
+	 * @return id of the Context which contains method specific information
 	 */
-	public Context getContext();
+	public String getContextId();
 
 	/**
 	 * @return if the method ended with an exception this returns the string
