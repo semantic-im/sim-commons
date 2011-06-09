@@ -16,7 +16,6 @@
 
 package sim.data;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,16 +54,23 @@ import java.util.UUID;
  * @author mcq
  * 
  */
-public final class Context implements Serializable {
+public final class Context implements Metrics {
 	private static final long serialVersionUID = 1L;
 	private final Map<String, Object> storage = new HashMap<String, Object>();
 	private final String id;
 	private final String name;
 	private final String tag;
 	private final Context parent;
+	private final long creationTime;
+	private long endTime;
 
-	public static Context build(String name, String tag, Context parent) {
+	public static Context create(String name, String tag, Context parent) {
 		return new Context(name, tag, parent);
+	}
+
+	public Context endContext() {
+		endTime = System.currentTimeMillis();
+		return this;
 	}
 
 	private Context(String name, String tag, Context parent) {
@@ -72,6 +78,7 @@ public final class Context implements Serializable {
 		this.name = name;
 		this.tag = tag;
 		this.parent = parent;
+		this.creationTime = System.currentTimeMillis();
 	}
 
 	public Context put(String key, Object value) {
@@ -186,5 +193,19 @@ public final class Context implements Serializable {
 
 	public Context getParent() {
 		return parent;
+	}
+
+	@Override
+	public long getCreationTime() {
+		return creationTime;
+	}
+
+	public long getEndTime() {
+		return endTime;
+	}
+
+	@Override
+	public void accept(MetricsVisitor visitor) {
+		visitor.visit(this);
 	}
 }
