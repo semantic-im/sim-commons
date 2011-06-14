@@ -52,9 +52,9 @@ package sim.data;
 public interface MethodMetrics extends Metrics {
 
 	/**
-	 * @return the method id
+	 * @return the method
 	 */
-	public MethodId getMethodId();
+	public Method getMethod();
 
 	/**
 	 * @return this system id

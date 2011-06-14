@@ -25,7 +25,6 @@ package sim.data;
 public final class MethodImpl implements Method {
 	private static final long serialVersionUID = 1L;
 
-	private long creationTime;
 	private ApplicationId applicationId;
 
 	private String methodName;
@@ -33,7 +32,6 @@ public final class MethodImpl implements Method {
 	private String contextId;
 
 	public MethodImpl(ApplicationId applicationId, String className, String methodName) {
-		this.creationTime = System.currentTimeMillis();
 		this.applicationId = applicationId;
 		this.methodName = methodName;
 		this.className = className;
@@ -58,9 +56,7 @@ public final class MethodImpl implements Method {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MethodImpl [creationTime=");
-		builder.append(creationTime);
-		builder.append(", ");
+		builder.append("MethodImpl [application=");
 		builder.append(applicationId);
 		builder.append(", methodName=");
 		builder.append(methodName);

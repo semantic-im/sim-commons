@@ -27,7 +27,7 @@ public final class MethodMetricsImpl implements MethodMetrics {
 
 	private long creationTime;
 	private SystemId systemId;
-	private MethodId methodId;
+	private Method method;
 
 	private String contextId;
 	private String exception;
@@ -231,10 +231,8 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MethodMetricsImpl [creationTime=");
-		builder.append(creationTime);
-		builder.append(", ");
-		builder.append(methodId);
+		builder.append("MethodMetricsImpl [method=");
+		builder.append(method.getClassName()+method.getMethodName());
 		builder.append(", ");
 		builder.append(systemId);
 		builder.append(", contextId=");
@@ -276,8 +274,8 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	}
 
 	@Override
-	public MethodId getMethodId() {
-		return this.methodId;
+	public Method getMethod() {
+		return this.method;
 	}
 
 }
