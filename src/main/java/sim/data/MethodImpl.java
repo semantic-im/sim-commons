@@ -29,7 +29,6 @@ public final class MethodImpl implements Method {
 
 	private String methodName;
 	private String className;
-	private String contextId;
 
 	public MethodImpl(ApplicationId applicationId, String className, String methodName) {
 		this.applicationId = applicationId;
@@ -62,8 +61,6 @@ public final class MethodImpl implements Method {
 		builder.append(methodName);
 		builder.append(", className=");
 		builder.append(className);
-		builder.append(", contextId=");
-		builder.append(contextId);
 		builder.append("]");
 		return builder.toString();
 	}

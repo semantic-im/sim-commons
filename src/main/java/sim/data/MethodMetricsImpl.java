@@ -47,8 +47,9 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	private long threadGccTime;
 	private long processTotalCpuTime;
 
-	public MethodMetricsImpl(ApplicationId applicationId, String className, String methodName) {
+	public MethodMetricsImpl(Method method) {
 		this.creationTime = System.currentTimeMillis();
+		this.method = method;
 	}
 
 	@Override
