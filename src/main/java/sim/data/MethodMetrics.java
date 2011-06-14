@@ -52,12 +52,12 @@ package sim.data;
 public interface MethodMetrics extends Metrics {
 
 	/**
-	 * @return the application id
+	 * @return the method id
 	 */
-	public ApplicationId getApplicationId();
+	public MethodId getMethodId();
 
 	/**
-	 * @return ths system id
+	 * @return this system id
 	 */
 	public SystemId getSystemId();
 
@@ -70,16 +70,6 @@ public interface MethodMetrics extends Metrics {
 	 * @param systemId the system id
 	 */
 	public void setSystemId(SystemId systemId);
-
-	/**
-	 * @return method name where the metrics are collected
-	 */
-	public String getMethodName();
-
-	/**
-	 * @return full class name where the metrics are collected
-	 */
-	public String getClassName();
 
 	/**
 	 * @return id of the Context which contains method specific information

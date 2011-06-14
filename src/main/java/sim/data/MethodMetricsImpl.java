@@ -26,11 +26,9 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	private static final long serialVersionUID = 1L;
 
 	private long creationTime;
-	private ApplicationId applicationId;
 	private SystemId systemId;
+	private MethodId methodId;
 
-	private String methodName;
-	private String className;
 	private String contextId;
 	private String exception;
 	private boolean endedWithError = false;
@@ -51,19 +49,11 @@ public final class MethodMetricsImpl implements MethodMetrics {
 
 	public MethodMetricsImpl(ApplicationId applicationId, String className, String methodName) {
 		this.creationTime = System.currentTimeMillis();
-		this.applicationId = applicationId;
-		this.methodName = methodName;
-		this.className = className;
 	}
 
 	@Override
 	public void accept(MetricsVisitor visitor) {
 		visitor.visit(this);
-	}
-
-	@Override
-	public ApplicationId getApplicationId() {
-		return applicationId;
 	}
 
 	@Override
@@ -83,16 +73,6 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	@Override
 	public long getCreationTime() {
 		return creationTime;
-	}
-
-	@Override
-	public String getMethodName() {
-		return methodName;
-	}
-
-	@Override
-	public String getClassName() {
-		return className;
 	}
 
 	@Override
@@ -254,13 +234,9 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		builder.append("MethodMetricsImpl [creationTime=");
 		builder.append(creationTime);
 		builder.append(", ");
-		builder.append(applicationId);
+		builder.append(methodId);
 		builder.append(", ");
 		builder.append(systemId);
-		builder.append(", methodName=");
-		builder.append(methodName);
-		builder.append(", className=");
-		builder.append(className);
 		builder.append(", contextId=");
 		builder.append(contextId);
 		builder.append(", exception=");
@@ -297,6 +273,11 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		builder.append(processTotalCpuTime);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public MethodId getMethodId() {
+		return this.methodId;
 	}
 
 }
