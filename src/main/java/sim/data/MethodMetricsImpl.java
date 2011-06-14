@@ -233,7 +233,7 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("MethodMetricsImpl [method=");
-		builder.append(method.getClassName()+method.getMethodName());
+		builder.append(method);
 		builder.append(", ");
 		builder.append(systemId);
 		builder.append(", contextId=");
