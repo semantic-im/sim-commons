@@ -16,6 +16,8 @@
 
 package sim.data;
 
+import java.io.Serializable;
+
 /**
  * Holds information about a method.
  * <p>
@@ -24,7 +26,7 @@ package sim.data;
  * @author ioantoma
  * 
  */
-public interface Method{
+public interface Method extends Serializable {
 
 	/**
 	 * @return the application id
