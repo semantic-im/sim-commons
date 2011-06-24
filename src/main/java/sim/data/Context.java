@@ -60,12 +60,12 @@ public final class Context implements Metrics {
 	private final String id;
 	private final String name;
 	private final String tag;
-	private final Context parent;
+	private final String parentContextId;
 	private final long creationTime;
 	private long endTime;
 
-	public static Context create(String name, String tag, Context parent) {
-		return new Context(name, tag, parent);
+	public static Context create(String name, String tag, String parentContextId) {
+		return new Context(name, tag, parentContextId);
 	}
 
 	public Context endContext() {
@@ -73,11 +73,11 @@ public final class Context implements Metrics {
 		return this;
 	}
 
-	private Context(String name, String tag, Context parent) {
+	private Context(String name, String tag, String parentContextId) {
 		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.tag = tag;
-		this.parent = parent;
+		this.parentContextId = parentContextId;
 		this.creationTime = System.currentTimeMillis();
 	}
 
@@ -146,10 +146,14 @@ public final class Context implements Metrics {
 		builder.append(name);
 		builder.append(", tag=");
 		builder.append(tag);
+		builder.append(", parentContextId=");
+		builder.append(parentContextId);
+		builder.append(", creationTime=");
+		builder.append(creationTime);
+		builder.append(", endTime=");
+		builder.append(endTime);
 		builder.append(", storage=");
 		builder.append(storage);
-		builder.append(", parent=");
-		builder.append(parent);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -191,10 +195,6 @@ public final class Context implements Metrics {
 		return tag;
 	}
 
-	public Context getParent() {
-		return parent;
-	}
-
 	@Override
 	public long getCreationTime() {
 		return creationTime;
@@ -207,5 +207,9 @@ public final class Context implements Metrics {
 	@Override
 	public void accept(MetricsVisitor visitor) {
 		visitor.visit(this);
+	}
+
+	public String getParentContextId() {
+		return parentContextId;
 	}
 }
