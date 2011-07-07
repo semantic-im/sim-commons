@@ -15,4 +15,6 @@ public interface MetricsVisitor {
 
 	void visit(Context context);
 
+	void visit(PlatformMetrics platformMetrics);
+
 }
