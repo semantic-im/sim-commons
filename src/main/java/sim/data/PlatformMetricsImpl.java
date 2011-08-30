@@ -33,6 +33,7 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	private long gccTime;
 	private long cpuTime;
 	private long usedMemory;
+	private long freeMemory;
 	private long uptime;
 	private double avgCpuUsage;
 	private double cpuUsage;
@@ -116,6 +117,15 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 
 	/*
 	 * (non-Javadoc)
+	 * @see sim.data.PlatformMetrics#getFreeMemory()
+	 */
+	@Override
+	public long getFreeMemory() {
+		return freeMemory;
+	}
+
+	/*
+	 * (non-Javadoc)
 	 * @see sim.data.PlatformMetrics#getUptime()
 	 */
 	@Override
@@ -157,6 +167,10 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		this.usedMemory = usedMemory;
 	}
 
+	public void setFreeMemory(long freeMemory) {
+		this.freeMemory = freeMemory;
+	}
+
 	public void setUptime(long uptime) {
 		this.uptime = uptime;
 	}
@@ -186,6 +200,7 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		result = prime * result + ((sysId == null) ? 0 : sysId.hashCode());
 		result = prime * result + (int) (uptime ^ (uptime >>> 32));
 		result = prime * result + (int) (usedMemory ^ (usedMemory >>> 32));
+		result = prime * result + (int) (freeMemory ^ (freeMemory >>> 32));
 		return result;
 	}
 
@@ -224,6 +239,8 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 			return false;
 		if (usedMemory != other.usedMemory)
 			return false;
+		if (freeMemory != other.freeMemory)
+			return false;
 		return true;
 	}
 
@@ -236,6 +253,8 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		builder.append(avgCpuUsage);
 		builder.append(", usedMemory=");
 		builder.append(usedMemory);
+		builder.append(", freeMemory=");
+		builder.append(freeMemory);
 		builder.append(", gccCount=");
 		builder.append(gccCount);
 		builder.append(", gccTime=");

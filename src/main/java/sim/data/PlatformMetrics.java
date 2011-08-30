@@ -30,6 +30,7 @@ package sim.data;
  * <li>average cpu usage - average cpu usage since platform start (%)</li>
  * <li>cpu usage - cpu usage for the last 5 seconds (%)</li>
  * <li>used memory - the amount of current used memory in bytes (bytes)</li>
+ * <li>free memory - the amount of current free memory in bytes (bytes)</li>
  * </ul>
  * 
  * @author mcq
@@ -78,6 +79,11 @@ public interface PlatformMetrics extends Metrics {
 	 * @return the amount of current used memory in bytes (bytes)
 	 */
 	public long getUsedMemory();
+
+	/**
+	 * @return the amount of current free memory in bytes (bytes)
+	 */
+	public long getFreeMemory();
 
 	/**
 	 * @return total time since platform start (ms)
