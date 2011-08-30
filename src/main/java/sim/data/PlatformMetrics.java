@@ -21,14 +21,19 @@ package sim.data;
  * <p>
  * List of collected metrics and their explanation:
  * <ul>
- * <li>gcc count - total number of collections since platform start (count)</li>
- * <li>gcc time - total accumulated collection elapsed time since platform start
+ * <li>total gcc count - total number of collections since jvm start (count)</li>
+ * <li>total gcc time - total accumulated collection elapsed time since jvm
+ * start (ms)</li>
+ * <li>gcc count - number of collections since last measurement (count)</li>
+ * <li>gcc time - accumulated collection elapsed time since last measurement
  * (ms)</li>
- * <li>cpu time - total CPU time spent by current instrumented application since
- * platform start (ms)</li>
- * <li>uptime - total time since platform start (ms)</li>
- * <li>average cpu usage - average cpu usage since platform start (%)</li>
- * <li>cpu usage - cpu usage for the last 5 seconds (%)</li>
+ * <li>total cpu time - total CPU time used by current instrumented application
+ * since jvm start (ms)</li>
+ * <li>cpu time - CPU time used by current instrumented application since last
+ * measurement (ms)</li>
+ * <li>uptime - total time since jvm start (ms)</li>
+ * <li>average cpu usage - average cpu usage since jvm start (%)</li>
+ * <li>cpu usage - average cpu usage since last measurement (%)</li>
  * <li>used memory - the amount of current used memory in bytes (bytes)</li>
  * <li>free memory - the amount of current free memory in bytes (bytes)</li>
  * </ul>
@@ -59,19 +64,34 @@ public interface PlatformMetrics extends Metrics {
 	public void setSystemId(SystemId systemId);
 
 	/**
-	 * @return total number of collections since platform start (count)
+	 * @return total number of collections since jvm start (count)
+	 */
+	public long getTotalGccCount();
+
+	/**
+	 * @return total accumulated collection elapsed time since jvm start (ms)
+	 */
+	public long getTotalGccTime();
+
+	/**
+	 * @return number of collections since last measurement (count)
 	 */
 	public long getGccCount();
 
 	/**
-	 * @return total accumulated collection elapsed time since platform start
-	 *         (ms)
+	 * @return accumulated collection elapsed time since last measurement (ms)
 	 */
 	public long getGccTime();
 
 	/**
-	 * @return total CPU time spent by current instrumented application since
-	 *         platform start (ms)
+	 * @return total CPU time used by current instrumented application since jvm
+	 *         start (ms)
+	 */
+	public long getTotalCpuTime();
+
+	/**
+	 * @return CPU time used by current instrumented application since last
+	 *         measurement (ms)
 	 */
 	public long getCpuTime();
 
@@ -91,12 +111,12 @@ public interface PlatformMetrics extends Metrics {
 	public long getUptime();
 
 	/**
-	 * @return average cpu usage since platform start (%)
+	 * @return average cpu usage since jvm start (%)
 	 */
 	public double getAvgCpuUsage();
 
 	/**
-	 * @return cpu usage for the last 5 seconds (%)
+	 * @return average cpu usage since last measurement (%)
 	 */
 	public double getCpuUsage();
 }

@@ -29,6 +29,9 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	private ApplicationId appId;
 	private SystemId sysId;
 
+	private long totalGccCount;
+	private long totalGccTime;
+	private long totalCpuTime;
 	private long gccCount;
 	private long gccTime;
 	private long cpuTime;
@@ -151,6 +154,45 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		return cpuUsage;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see sim.data.PlatformMetrics#getTotalGccCount()
+	 */
+	@Override
+	public long getTotalGccCount() {
+		return totalGccCount;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see sim.data.PlatformMetrics#getTotalGccTime()
+	 */
+	@Override
+	public long getTotalGccTime() {
+		return totalGccTime;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see sim.data.PlatformMetrics#getTotalCpuTime()
+	 */
+	@Override
+	public long getTotalCpuTime() {
+		return totalCpuTime;
+	}
+
+	public void setTotalGccCount(long totalGccCount) {
+		this.totalGccCount = totalGccCount;
+	}
+
+	public void setTotalGccTime(long totalGccTime) {
+		this.totalGccTime = totalGccTime;
+	}
+
+	public void setTotalCpuTime(long totalCpuTime) {
+		this.totalCpuTime = totalCpuTime;
+	}
+
 	public void setGccCount(long gccCount) {
 		this.gccCount = gccCount;
 	}
@@ -195,12 +237,15 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		temp = Double.doubleToLongBits(cpuUsage);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + (int) (creationTime ^ (creationTime >>> 32));
+		result = prime * result + (int) (freeMemory ^ (freeMemory >>> 32));
 		result = prime * result + (int) (gccCount ^ (gccCount >>> 32));
 		result = prime * result + (int) (gccTime ^ (gccTime >>> 32));
 		result = prime * result + ((sysId == null) ? 0 : sysId.hashCode());
+		result = prime * result + (int) (totalCpuTime ^ (totalCpuTime >>> 32));
+		result = prime * result + (int) (totalGccCount ^ (totalGccCount >>> 32));
+		result = prime * result + (int) (totalGccTime ^ (totalGccTime >>> 32));
 		result = prime * result + (int) (uptime ^ (uptime >>> 32));
 		result = prime * result + (int) (usedMemory ^ (usedMemory >>> 32));
-		result = prime * result + (int) (freeMemory ^ (freeMemory >>> 32));
 		return result;
 	}
 
@@ -226,6 +271,8 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 			return false;
 		if (creationTime != other.creationTime)
 			return false;
+		if (freeMemory != other.freeMemory)
+			return false;
 		if (gccCount != other.gccCount)
 			return false;
 		if (gccTime != other.gccTime)
@@ -235,11 +282,15 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 				return false;
 		} else if (!sysId.equals(other.sysId))
 			return false;
+		if (totalCpuTime != other.totalCpuTime)
+			return false;
+		if (totalGccCount != other.totalGccCount)
+			return false;
+		if (totalGccTime != other.totalGccTime)
+			return false;
 		if (uptime != other.uptime)
 			return false;
 		if (usedMemory != other.usedMemory)
-			return false;
-		if (freeMemory != other.freeMemory)
 			return false;
 		return true;
 	}
@@ -249,26 +300,32 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		StringBuilder builder = new StringBuilder();
 		builder.append("PlatformMetricsImpl [cpuUsage=");
 		builder.append(cpuUsage);
-		builder.append(", avgCpuUsage=");
-		builder.append(avgCpuUsage);
 		builder.append(", usedMemory=");
 		builder.append(usedMemory);
 		builder.append(", freeMemory=");
 		builder.append(freeMemory);
-		builder.append(", gccCount=");
-		builder.append(gccCount);
 		builder.append(", gccTime=");
 		builder.append(gccTime);
+		builder.append(", gccCount=");
+		builder.append(gccCount);
 		builder.append(", cpuTime=");
 		builder.append(cpuTime);
+		builder.append(", avgCpuUsage=");
+		builder.append(avgCpuUsage);
+		builder.append(", totalCpuTime=");
+		builder.append(totalCpuTime);
+		builder.append(", totalGccTime=");
+		builder.append(totalGccTime);
+		builder.append(", totalGccCount=");
+		builder.append(totalGccCount);
 		builder.append(", uptime=");
 		builder.append(uptime);
-		builder.append(", creationTime=");
-		builder.append(creationTime);
 		builder.append(", appId=");
 		builder.append(appId);
 		builder.append(", sysId=");
 		builder.append(sysId);
+		builder.append(", creationTime=");
+		builder.append(creationTime);
 		builder.append("]");
 		return builder.toString();
 	}
