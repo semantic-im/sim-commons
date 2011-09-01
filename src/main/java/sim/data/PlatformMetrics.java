@@ -34,8 +34,14 @@ package sim.data;
  * <li>uptime - total time since jvm start (ms)</li>
  * <li>average cpu usage - average cpu usage since jvm start (%)</li>
  * <li>cpu usage - average cpu usage since last measurement (%)</li>
- * <li>used memory - the amount of current used memory in bytes (bytes)</li>
- * <li>free memory - the amount of current free memory in bytes (bytes)</li>
+ * <li>allocated memory - the amount of current allocated (commited) memory in
+ * bytes (bytes)</li>
+ * <li>used memory - the amount of current allocated and used memory in bytes
+ * (bytes)</li>
+ * <li>free memory - the amount of current allocated and free memory in bytes
+ * (bytes)</li>
+ * <li>unallocated memory - the amount of current unallocated (and free to
+ * allocate) memory in bytes (bytes)</li>
  * </ul>
  * 
  * @author mcq
@@ -96,14 +102,26 @@ public interface PlatformMetrics extends Metrics {
 	public long getCpuTime();
 
 	/**
-	 * @return the amount of current used memory in bytes (bytes)
+	 * @return the amount of current allocated (commited) memory in bytes
+	 *         (bytes)
+	 */
+	public long getAllocatedMemory();
+
+	/**
+	 * @return the amount of current allocated and used memory in bytes (bytes)
 	 */
 	public long getUsedMemory();
 
 	/**
-	 * @return the amount of current free memory in bytes (bytes)
+	 * @return the amount of current allocated and free memory in bytes (bytes)
 	 */
 	public long getFreeMemory();
+
+	/**
+	 * @return the amount of current unallocated (and free to allocate) memory
+	 *         in bytes (bytes)
+	 */
+	public long getUnallocatedMemory();
 
 	/**
 	 * @return total time since platform start (ms)

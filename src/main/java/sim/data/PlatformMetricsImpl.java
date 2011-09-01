@@ -35,8 +35,10 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	private long gccCount;
 	private long gccTime;
 	private long cpuTime;
+	private long allocatedMemory;
 	private long usedMemory;
 	private long freeMemory;
+	private long unallocatedMemory;
 	private long uptime;
 	private double avgCpuUsage;
 	private double cpuUsage;
@@ -226,84 +228,18 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((appId == null) ? 0 : appId.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(avgCpuUsage);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + (int) (cpuTime ^ (cpuTime >>> 32));
-		temp = Double.doubleToLongBits(cpuUsage);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + (int) (creationTime ^ (creationTime >>> 32));
-		result = prime * result + (int) (freeMemory ^ (freeMemory >>> 32));
-		result = prime * result + (int) (gccCount ^ (gccCount >>> 32));
-		result = prime * result + (int) (gccTime ^ (gccTime >>> 32));
-		result = prime * result + ((sysId == null) ? 0 : sysId.hashCode());
-		result = prime * result + (int) (totalCpuTime ^ (totalCpuTime >>> 32));
-		result = prime * result + (int) (totalGccCount ^ (totalGccCount >>> 32));
-		result = prime * result + (int) (totalGccTime ^ (totalGccTime >>> 32));
-		result = prime * result + (int) (uptime ^ (uptime >>> 32));
-		result = prime * result + (int) (usedMemory ^ (usedMemory >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof PlatformMetricsImpl))
-			return false;
-		PlatformMetricsImpl other = (PlatformMetricsImpl) obj;
-		if (appId == null) {
-			if (other.appId != null)
-				return false;
-		} else if (!appId.equals(other.appId))
-			return false;
-		if (Double.doubleToLongBits(avgCpuUsage) != Double.doubleToLongBits(other.avgCpuUsage))
-			return false;
-		if (cpuTime != other.cpuTime)
-			return false;
-		if (Double.doubleToLongBits(cpuUsage) != Double.doubleToLongBits(other.cpuUsage))
-			return false;
-		if (creationTime != other.creationTime)
-			return false;
-		if (freeMemory != other.freeMemory)
-			return false;
-		if (gccCount != other.gccCount)
-			return false;
-		if (gccTime != other.gccTime)
-			return false;
-		if (sysId == null) {
-			if (other.sysId != null)
-				return false;
-		} else if (!sysId.equals(other.sysId))
-			return false;
-		if (totalCpuTime != other.totalCpuTime)
-			return false;
-		if (totalGccCount != other.totalGccCount)
-			return false;
-		if (totalGccTime != other.totalGccTime)
-			return false;
-		if (uptime != other.uptime)
-			return false;
-		if (usedMemory != other.usedMemory)
-			return false;
-		return true;
-	}
-
-	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("PlatformMetricsImpl [cpuUsage=");
 		builder.append(cpuUsage);
+		builder.append(", allocatedMemory=");
+		builder.append(allocatedMemory);
 		builder.append(", usedMemory=");
 		builder.append(usedMemory);
 		builder.append(", freeMemory=");
 		builder.append(freeMemory);
+		builder.append(", unallocatedMemory=");
+		builder.append(unallocatedMemory);
 		builder.append(", gccTime=");
 		builder.append(gccTime);
 		builder.append(", gccCount=");
@@ -328,6 +264,24 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		builder.append(creationTime);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public long getAllocatedMemory() {
+		return allocatedMemory;
+	}
+
+	public void setAllocatedMemory(long allocatedMemory) {
+		this.allocatedMemory = allocatedMemory;
+	}
+
+	@Override
+	public long getUnallocatedMemory() {
+		return unallocatedMemory;
+	}
+
+	public void setUnallocatedMemory(long unallocatedMemory) {
+		this.unallocatedMemory = unallocatedMemory;
 	}
 
 }
