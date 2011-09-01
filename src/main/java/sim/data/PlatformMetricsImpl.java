@@ -25,8 +25,8 @@ package sim.data;
 public class PlatformMetricsImpl implements PlatformMetrics {
 	private static final long serialVersionUID = 1L;
 
-	private long creationTime;
-	private ApplicationId appId;
+	private final long creationTime;
+	private final ApplicationId appId;
 	private SystemId sysId;
 
 	private long totalGccCount;
