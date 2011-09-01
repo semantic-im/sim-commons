@@ -32,16 +32,21 @@ public class ApplicationId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/* application id */
-	private String id;
-	
+	private final String id;
+
 	/*application name*/
-	private String name;
-	
+	private final String name;
+
+	private final long maxMemory;
+	private final long cpuCount;
+
 	public ApplicationId(String id, String name) {
 		this.id = id;
 		this.name = name;
+		maxMemory = Runtime.getRuntime().maxMemory();
+		cpuCount = Runtime.getRuntime().availableProcessors();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,10 +72,14 @@ public class ApplicationId implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("AppId [id=");
+		builder.append("ApplicationId [id=");
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
+		builder.append(", maxMemory=");
+		builder.append(maxMemory);
+		builder.append(", cpuCount=");
+		builder.append(cpuCount);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -90,5 +99,13 @@ public class ApplicationId implements Serializable {
 	public String getName() {
 		return name;
 	}
-	
+
+	public long getMaxMemory() {
+		return maxMemory;
+	}
+
+	public long getCpuCount() {
+		return cpuCount;
+	}
+
 }
