@@ -37,13 +37,13 @@ public class ApplicationId implements Serializable {
 	/*application name*/
 	private final String name;
 
-	private final long maxMemory;
+	private final long totalMemory;
 	private final long cpuCount;
 
 	public ApplicationId(String id, String name) {
 		this.id = id;
 		this.name = name;
-		maxMemory = Runtime.getRuntime().maxMemory();
+		totalMemory = Runtime.getRuntime().maxMemory();
 		cpuCount = Runtime.getRuntime().availableProcessors();
 	}
 
@@ -76,8 +76,8 @@ public class ApplicationId implements Serializable {
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
-		builder.append(", maxMemory=");
-		builder.append(maxMemory);
+		builder.append(", totalMemory=");
+		builder.append(totalMemory);
 		builder.append(", cpuCount=");
 		builder.append(cpuCount);
 		builder.append("]");
@@ -100,8 +100,8 @@ public class ApplicationId implements Serializable {
 		return name;
 	}
 
-	public long getMaxMemory() {
-		return maxMemory;
+	public long getTotalMemory() {
+		return totalMemory;
 	}
 
 	public long getCpuCount() {
