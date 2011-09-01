@@ -44,6 +44,23 @@ package sim.data;
  * executing this method</li>
  * <li>gcc time - approximate accumulated collection elapsed time in
  * milliseconds while executing this method</li>
+ * <li>allocated memory before - the amount of allocated (commited) memory
+ * before method execution (bytes)</li>
+ * <li>allocated memory after - the amount of allocated (commited) memory after
+ * method execution (bytes)</li>
+ * <li>used memory before - the amount of allocated and used memory before
+ * method execution (bytes)</li>
+ * <li>used memory after - the amount of allocated and used memory after method
+ * execution (bytes)</li>
+ * <li>free memory before - the amount of allocated and free memory before
+ * method execution (bytes)</li>
+ * <li>free memory after - the amount of allocated and free memory after method
+ * execution (bytes)</li>
+ * <li>unallocated memory before - the amount of unallocated (and free to
+ * allocate) memory before method execution (bytes)</li>
+ * <li>unallocated memory after - the amount of unallocated (and free to
+ * allocate) memory after method execution (bytes)</li>
+ * 
  * </ul>
  * 
  * @author mcq
@@ -167,4 +184,52 @@ public interface MethodMetrics extends Metrics {
 	 *         application) executing this method (ms)
 	 */
 	public long getProcessTotalCpuTime();
+
+
+	/**
+	 * @return the amount of allocated (commited) memory before method execution (bytes)
+	 */
+	public long getAllocatedMemoryBefore();
+
+	/**
+	 * @return the amount of allocated (commited) memory after method execution (bytes)
+	 */
+	public long getAllocatedMemoryAfter();
+
+	/**
+	 * @return the amount of allocated and used memory before method execution
+	 *         (bytes)
+	 */
+	public long getUsedMemoryBefore();
+
+	/**
+	 * @return the amount of allocated and used memory after method execution
+	 *         (bytes)
+	 */
+	public long getUsedMemoryAfter();
+
+	/**
+	 * @return the amount of allocated and free memory before method execution
+	 *         (bytes)
+	 */
+	public long getFreeMemoryBefore();
+
+	/**
+	 * @return the amount of allocated and free memory after method execution
+	 *         (bytes)
+	 */
+	public long getFreeMemoryAfter();
+
+	/**
+	 * @return the amount of unallocated (and free to allocate) memory before
+	 *         method execution (bytes)
+	 */
+	public long getUnallocatedMemoryBefore();
+
+	/**
+	 * @return the amount of unallocated (and free to allocate) memory after
+	 *         method execution (bytes)
+	 */
+	public long getUnallocatedMemoryAfter();
+
 }

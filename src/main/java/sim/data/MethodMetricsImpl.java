@@ -47,6 +47,15 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	private long threadGccTime;
 	private long processTotalCpuTime;
 
+	private long allocatedMemoryBefore;
+	private long allocatedMemoryAfter;
+	private long usedMemoryBefore;
+	private long usedMemoryAfter;
+	private long freeMemoryBefore;
+	private long freeMemoryAfter;
+	private long unallocatedMemoryBefore;
+	private long unallocatedMemoryAfter;
+
 	public MethodMetricsImpl(Method method) {
 		this.creationTime = System.currentTimeMillis();
 		this.method = method;
@@ -234,20 +243,10 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		StringBuilder builder = new StringBuilder();
 		builder.append("MethodMetricsImpl [method=");
 		builder.append(method);
-		builder.append(", ");
-		builder.append(systemId);
-		builder.append(", contextId=");
-		builder.append(contextId);
-		builder.append(", exception=");
-		builder.append(exception);
-		builder.append(", endedWithError=");
-		builder.append(endedWithError);
-		builder.append(", beginExecutionTime=");
-		builder.append(beginExecutionTime);
-		builder.append(", endExecutionTime=");
-		builder.append(endExecutionTime);
 		builder.append(", wallClockTime=");
 		builder.append(wallClockTime);
+		builder.append(", processTotalCpuTime=");
+		builder.append(processTotalCpuTime);
 		builder.append(", threadUserCpuTime=");
 		builder.append(threadUserCpuTime);
 		builder.append(", threadSystemCpuTime=");
@@ -268,8 +267,36 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		builder.append(threadGccCount);
 		builder.append(", threadGccTime=");
 		builder.append(threadGccTime);
-		builder.append(", processTotalCpuTime=");
-		builder.append(processTotalCpuTime);
+		builder.append(", allocatedMemoryBefore=");
+		builder.append(allocatedMemoryBefore);
+		builder.append(", allocatedMemoryAfter=");
+		builder.append(allocatedMemoryAfter);
+		builder.append(", usedMemoryBefore=");
+		builder.append(usedMemoryBefore);
+		builder.append(", usedMemoryAfter=");
+		builder.append(usedMemoryAfter);
+		builder.append(", freeMemoryBefore=");
+		builder.append(freeMemoryBefore);
+		builder.append(", freeMemoryAfter=");
+		builder.append(freeMemoryAfter);
+		builder.append(", unallocatedMemoryBefore=");
+		builder.append(unallocatedMemoryBefore);
+		builder.append(", unallocatedMemoryAfter=");
+		builder.append(unallocatedMemoryAfter);
+		builder.append(", exception=");
+		builder.append(exception);
+		builder.append(", creationTime=");
+		builder.append(creationTime);
+		builder.append(", systemId=");
+		builder.append(systemId);
+		builder.append(", contextId=");
+		builder.append(contextId);
+		builder.append(", endedWithError=");
+		builder.append(endedWithError);
+		builder.append(", beginExecutionTime=");
+		builder.append(beginExecutionTime);
+		builder.append(", endExecutionTime=");
+		builder.append(endExecutionTime);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -277,6 +304,78 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	@Override
 	public Method getMethod() {
 		return this.method;
+	}
+
+	@Override
+	public long getAllocatedMemoryBefore() {
+		return allocatedMemoryBefore;
+	}
+
+	public void setAllocatedMemoryBefore(long allocatedMemoryBefore) {
+		this.allocatedMemoryBefore = allocatedMemoryBefore;
+	}
+
+	@Override
+	public long getAllocatedMemoryAfter() {
+		return allocatedMemoryAfter;
+	}
+
+	public void setAllocatedMemoryAfter(long allocatedMemoryAfter) {
+		this.allocatedMemoryAfter = allocatedMemoryAfter;
+	}
+
+	@Override
+	public long getUsedMemoryBefore() {
+		return usedMemoryBefore;
+	}
+
+	public void setUsedMemoryBefore(long usedMemoryBefore) {
+		this.usedMemoryBefore = usedMemoryBefore;
+	}
+
+	@Override
+	public long getUsedMemoryAfter() {
+		return usedMemoryAfter;
+	}
+
+	public void setUsedMemoryAfter(long usedMemoryAfter) {
+		this.usedMemoryAfter = usedMemoryAfter;
+	}
+
+	@Override
+	public long getFreeMemoryBefore() {
+		return freeMemoryBefore;
+	}
+
+	public void setFreeMemoryBefore(long freeMemoryBefore) {
+		this.freeMemoryBefore = freeMemoryBefore;
+	}
+
+	@Override
+	public long getFreeMemoryAfter() {
+		return freeMemoryAfter;
+	}
+
+	public void setFreeMemoryAfter(long freeMemoryAfter) {
+		this.freeMemoryAfter = freeMemoryAfter;
+	}
+
+	@Override
+	public long getUnallocatedMemoryBefore() {
+		return unallocatedMemoryBefore;
+	}
+
+	public void setUnallocatedMemoryBefore(long unallocatedMemoryBefore) {
+		this.unallocatedMemoryBefore = unallocatedMemoryBefore;
+	}
+
+	@Override
+	public long getUnallocatedMemoryAfter() {
+		return unallocatedMemoryAfter;
+	}
+
+	public void setUnallocatedMemoryAfter(long unallocatedMemoryAfter) {
+		this.unallocatedMemoryAfter = unallocatedMemoryAfter;
 	}
 
 }
