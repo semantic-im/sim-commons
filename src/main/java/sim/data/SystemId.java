@@ -32,16 +32,21 @@ public class SystemId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/* id of the system */
-	private String id;
-	
-	/*name of the system*/
-	private String name;
+	private final String id;
 
-	public SystemId(String id, String name) {
+	/*name of the system*/
+	private final String name;
+
+	private final long totalMemory;
+	private final long cpuCount;
+
+	public SystemId(String id, String name, long totalMemory, long cpuCount) {
 		this.id = id;
 		this.name = name;
+		this.totalMemory = totalMemory;
+		this.cpuCount = cpuCount;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,7 +87,7 @@ public class SystemId implements Serializable {
 	public String getId() {
 		return id;
 	}
-	
+
 	/**
 	 * 
 	 * @return name
@@ -90,5 +95,13 @@ public class SystemId implements Serializable {
 	public String getName() {
 		return name;
 	}
-	
+
+	public long getTotalMemory() {
+		return totalMemory;
+	}
+
+	public long getCpuCount() {
+		return cpuCount;
+	}
+
 }
