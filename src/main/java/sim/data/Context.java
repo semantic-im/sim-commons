@@ -63,22 +63,33 @@ public final class Context implements Metrics {
 	private final String parentContextId;
 	private final long creationTime;
 	private long endTime;
+	private final ApplicationId applicationId;
+	private SystemId systemId;
 
-	public static Context create(String name, String tag, String parentContextId) {
-		return new Context(name, tag, parentContextId);
-	}
-
-	public Context endContext() {
-		endTime = System.currentTimeMillis();
-		return this;
-	}
-
-	private Context(String name, String tag, String parentContextId) {
+	private Context(String name, String tag, String parentContextId, ApplicationId applicationId) {
 		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.tag = tag;
 		this.parentContextId = parentContextId;
 		this.creationTime = System.currentTimeMillis();
+		this.applicationId = applicationId;
+	}
+
+	public static Context create(String name, String tag, String parentContextId, ApplicationId applicationId) {
+		return new Context(name, tag, parentContextId, applicationId);
+	}
+
+	public ApplicationId getApplicationId() {
+		return applicationId;
+	}
+
+	public SystemId getSystemId() {
+		return systemId;
+	}
+
+	public Context endContext() {
+		endTime = System.currentTimeMillis();
+		return this;
 	}
 
 	public Context put(String key, Object value) {
@@ -211,5 +222,9 @@ public final class Context implements Metrics {
 
 	public String getParentContextId() {
 		return parentContextId;
+	}
+
+	public void setSystemId(SystemId systemId) {
+		this.systemId = systemId;
 	}
 }
