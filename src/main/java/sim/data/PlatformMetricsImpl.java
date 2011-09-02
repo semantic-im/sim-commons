@@ -42,6 +42,9 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	private long uptime;
 	private double avgCpuUsage;
 	private double cpuUsage;
+	private long threadsCount;
+	private long threadsStarted;
+	private long totalThreadsStarted;
 
 	public PlatformMetricsImpl(ApplicationId applicationId) {
 		this.creationTime = System.currentTimeMillis();
@@ -232,6 +235,10 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		StringBuilder builder = new StringBuilder();
 		builder.append("PlatformMetricsImpl [cpuUsage=");
 		builder.append(cpuUsage);
+		builder.append(", threadsCount=");
+		builder.append(threadsCount);
+		builder.append(", threadsStarted=");
+		builder.append(threadsStarted);
 		builder.append(", allocatedMemory=");
 		builder.append(allocatedMemory);
 		builder.append(", usedMemory=");
@@ -254,6 +261,8 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		builder.append(totalGccTime);
 		builder.append(", totalGccCount=");
 		builder.append(totalGccCount);
+		builder.append(", totalThreadsStarted=");
+		builder.append(totalThreadsStarted);
 		builder.append(", uptime=");
 		builder.append(uptime);
 		builder.append(", ");
@@ -282,6 +291,33 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 
 	public void setUnallocatedMemory(long unallocatedMemory) {
 		this.unallocatedMemory = unallocatedMemory;
+	}
+
+	@Override
+	public long getThreadsCount() {
+		return threadsCount;
+	}
+
+	public void setThreadsCount(long threadsCount) {
+		this.threadsCount = threadsCount;
+	}
+
+	@Override
+	public long getThreadsStarted() {
+		return threadsStarted;
+	}
+
+	public void setThreadsStarted(long threadsStarted) {
+		this.threadsStarted = threadsStarted;
+	}
+
+	@Override
+	public long getTotalThreadsStarted() {
+		return totalThreadsStarted;
+	}
+
+	public void setTotalThreadsStarted(long totalThreadsStarted) {
+		this.totalThreadsStarted = totalThreadsStarted;
 	}
 
 }

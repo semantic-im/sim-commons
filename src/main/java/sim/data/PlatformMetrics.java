@@ -42,6 +42,12 @@ package sim.data;
  * (bytes)</li>
  * <li>unallocated memory - the amount of current unallocated (and free to
  * allocate) memory in bytes (bytes)</li>
+ * <li>threads count - the current number of live threads including both daemon
+ * and non-daemon threads (count)</li>
+ * <li>threads started - the number of threads started since last measurement
+ * (count)</li>
+ * <li>total threads started - total number of threads started since jvm start
+ * (count)</li>
  * </ul>
  * 
  * @author mcq
@@ -137,4 +143,21 @@ public interface PlatformMetrics extends Metrics {
 	 * @return average cpu usage since last measurement (%)
 	 */
 	public double getCpuUsage();
+
+	/**
+	 * @return the current number of live threads including both daemon and
+	 *         non-daemon threads (count)
+	 */
+	public long getThreadsCount();
+
+	/**
+	 * @return the number of threads started since last measurement (count)
+	 */
+	public long getThreadsStarted();
+
+	/**
+	 * @return total number of threads started since jvm start (count)
+	 */
+	public long getTotalThreadsStarted();
+
 }
