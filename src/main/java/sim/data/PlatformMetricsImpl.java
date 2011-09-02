@@ -26,8 +26,8 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	private static final long serialVersionUID = 1L;
 
 	private final long creationTime;
-	private final ApplicationId appId;
-	private SystemId sysId;
+	private final ApplicationId applicationId;
+	private SystemId systemId;
 
 	private long totalGccCount;
 	private long totalGccTime;
@@ -45,7 +45,7 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 
 	public PlatformMetricsImpl(ApplicationId applicationId) {
 		this.creationTime = System.currentTimeMillis();
-		this.appId = applicationId;
+		this.applicationId = applicationId;
 	}
 
 	/* (non-Javadoc)
@@ -69,7 +69,7 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	 */
 	@Override
 	public ApplicationId getApplicationId() {
-		return appId;
+		return applicationId;
 	}
 
 	/* (non-Javadoc)
@@ -77,7 +77,7 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	 */
 	@Override
 	public SystemId getSystemId() {
-		return sysId;
+		return systemId;
 	}
 
 	/* (non-Javadoc)
@@ -85,7 +85,7 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 	 */
 	@Override
 	public void setSystemId(SystemId systemId) {
-		this.sysId = systemId;
+		this.systemId = systemId;
 	}
 
 	/* (non-Javadoc)
@@ -256,10 +256,10 @@ public class PlatformMetricsImpl implements PlatformMetrics {
 		builder.append(totalGccCount);
 		builder.append(", uptime=");
 		builder.append(uptime);
-		builder.append(", appId=");
-		builder.append(appId);
-		builder.append(", sysId=");
-		builder.append(sysId);
+		builder.append(", ");
+		builder.append(applicationId);
+		builder.append(", ");
+		builder.append(systemId);
 		builder.append(", creationTime=");
 		builder.append(creationTime);
 		builder.append("]");

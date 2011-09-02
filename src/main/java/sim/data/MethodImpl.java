@@ -55,8 +55,8 @@ public final class MethodImpl implements Method {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MethodImpl [application=");
-		builder.append(applicationId);
+		builder.append("MethodImpl [applicationId=");
+		builder.append(applicationId.getId());
 		builder.append(", methodName=");
 		builder.append(methodName);
 		builder.append(", className=");

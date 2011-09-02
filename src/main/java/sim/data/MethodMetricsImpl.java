@@ -241,7 +241,7 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MethodMetricsImpl [method=");
+		builder.append("MethodMetricsImpl [");
 		builder.append(method);
 		builder.append(", wallClockTime=");
 		builder.append(wallClockTime);
@@ -288,7 +288,7 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		builder.append(", creationTime=");
 		builder.append(creationTime);
 		builder.append(", systemId=");
-		builder.append(systemId);
+		builder.append(systemId == null ? "null" : systemId.getId());
 		builder.append(", contextId=");
 		builder.append(contextId);
 		builder.append(", endedWithError=");

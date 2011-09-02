@@ -76,6 +76,10 @@ public class SystemId implements Serializable {
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
+		builder.append(", totalMemory=");
+		builder.append(totalMemory);
+		builder.append(", cpuCount=");
+		builder.append(cpuCount);
 		builder.append("]");
 		return builder.toString();
 	}
