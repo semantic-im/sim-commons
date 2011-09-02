@@ -163,6 +163,10 @@ public final class Context implements Metrics {
 		builder.append(creationTime);
 		builder.append(", endTime=");
 		builder.append(endTime);
+		builder.append(", applicationId=");
+		builder.append(applicationId);
+		builder.append(", systemId=");
+		builder.append(systemId);
 		builder.append(", storage=");
 		builder.append(storage);
 		builder.append("]");
