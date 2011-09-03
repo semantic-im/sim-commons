@@ -54,13 +54,18 @@ public final class SystemMetricsImpl implements SystemMetrics {
 	private long threadsCount;
 	private long tcpOutbound;
 	private long tcpInbound;
+	private long networkSent;
+	private long networkReceived;
+	private long loopbackNetworkSent;
+	private long loopbackNetworkReceived;
 
 	public SystemMetricsImpl(SystemId systemId, double systemLoadAverage, long totalSystemFreeMemory,
 			long totalSystemUsedMemory, long totalSystemUsedSwap, long systemOpenFileDescriptors,
 			long swapIn, long swapOut, long ioRead, long ioWrite, double userPerc, double sysPerc,
 			double idlePerc, double waitPerc, double irqPerc, double user, double sys, double idle,
 			double wait, double irq, long processesCount, long runningProcessesCount, long threadsCount,
-			long tcpOutbound, long tcpInbound) {
+			long tcpOutbound, long tcpInbound, long networkSent, long networkReceived,
+			long loopbackNetworkSent, long loopbackNetworkReceived) {
 		this.creationTime = System.currentTimeMillis();
 		this.systemId = systemId;
 		this.systemLoadAverage = systemLoadAverage;
@@ -87,6 +92,10 @@ public final class SystemMetricsImpl implements SystemMetrics {
 		this.threadsCount = threadsCount;
 		this.tcpInbound = tcpInbound;
 		this.tcpOutbound = tcpOutbound;
+		this.networkSent = networkSent;
+		this.networkReceived = networkReceived;
+		this.loopbackNetworkSent = loopbackNetworkSent;
+		this.loopbackNetworkReceived = loopbackNetworkReceived;
 	}
 
 	@Override
@@ -374,8 +383,36 @@ public final class SystemMetricsImpl implements SystemMetrics {
 		builder.append(tcpOutbound);
 		builder.append(", tcpInbound=");
 		builder.append(tcpInbound);
+		builder.append(", networkSent=");
+		builder.append(networkSent);
+		builder.append(", networkReceived=");
+		builder.append(networkReceived);
+		builder.append(", loopbackNetworkSent=");
+		builder.append(loopbackNetworkSent);
+		builder.append(", loopbackNetworkReceived=");
+		builder.append(loopbackNetworkReceived);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public long getNetworkSent() {
+		return networkSent;
+	}
+
+	@Override
+	public long getNetworkReceived() {
+		return networkReceived;
+	}
+
+	@Override
+	public long getLoopbackNetworkSent() {
+		return loopbackNetworkSent;
+	}
+
+	@Override
+	public long getLoopbackNetworkReceived() {
+		return loopbackNetworkReceived;
 	}
 
 }
