@@ -29,7 +29,7 @@ public final class SystemMetricsImpl implements SystemMetrics {
 
 	private long creationTime;
 	private SystemId systemId;
-	
+
 	private double systemLoadAverage;
 	private long totalSystemFreeMemory;
 	private long totalSystemUsedMemory;
@@ -49,6 +49,11 @@ public final class SystemMetricsImpl implements SystemMetrics {
 	private double idle;
 	private double wait;
 	private double irq;
+	private long processesCount;
+	private long runningProcessesCount;
+	private long threadsCount;
+	private long tcpOutbound;
+	private long tcpInbound;
 
 	public SystemMetricsImpl(SystemId systemId, double systemLoadAverage, long totalSystemFreeMemory,
 			long totalSystemUsedMemory, long totalSystemUsedSwap, long systemOpenFileDescriptors,
@@ -284,11 +289,36 @@ public final class SystemMetricsImpl implements SystemMetrics {
 	}
 
 	@Override
+	public long getProcessesCount() {
+		return processesCount;
+	}
+
+	@Override
+	public long getRunningProcessesCount() {
+		return runningProcessesCount;
+	}
+
+	@Override
+	public long getThreadsCount() {
+		return threadsCount;
+	}
+
+	@Override
+	public long getTcpOutbound() {
+		return tcpOutbound;
+	}
+
+	@Override
+	public long getTcpInbound() {
+		return tcpInbound;
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SystemMetricsImpl [creationTime=");
 		builder.append(creationTime);
-		builder.append(", ");
+		builder.append(", systemId=");
 		builder.append(systemId);
 		builder.append(", systemLoadAverage=");
 		builder.append(systemLoadAverage);
@@ -328,6 +358,16 @@ public final class SystemMetricsImpl implements SystemMetrics {
 		builder.append(wait);
 		builder.append(", irq=");
 		builder.append(irq);
+		builder.append(", processesCount=");
+		builder.append(processesCount);
+		builder.append(", runningProcessesCount=");
+		builder.append(runningProcessesCount);
+		builder.append(", threadsCount=");
+		builder.append(threadsCount);
+		builder.append(", tcpOutbound=");
+		builder.append(tcpOutbound);
+		builder.append(", tcpInbound=");
+		builder.append(tcpInbound);
 		builder.append("]");
 		return builder.toString();
 	}

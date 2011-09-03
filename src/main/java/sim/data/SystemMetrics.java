@@ -24,9 +24,9 @@ package sim.data;
  * 
  */
 public interface SystemMetrics extends Metrics {
-	
+
 	public SystemId getSystemId();
-	
+
 	/**
 	 * @return returns system load percentage
 	 */
@@ -36,27 +36,27 @@ public interface SystemMetrics extends Metrics {
 	 * @return returns total system free memory kB
 	 */
 	public long getTotalSystemFreeMemory();
-	
+
 	/**
 	 * @return returns total system used memory kB
 	 */
 	public long getTotalSystemUsedMemory();
-	
+
 	/**
 	 * @return returns total system used swap kB
 	 */
 	public long getTotalSystemUsedSwap();
-	
+
 	/**
 	 * @return returns system open file descriptors count
 	 */
 	public long getSystemOpenFileDescriptors();
-	
+
 	/**
 	 * @return returns size of data read from swap in kB
 	 */
 	public long getSwapIn();
-	
+
 	/**
 	 * @return returns size of data write to swap in kB
 	 */
@@ -66,7 +66,7 @@ public interface SystemMetrics extends Metrics {
 	 * @return returns system I/O reads kB
 	 */
 	public long getIORead();
-	
+
 	/**
 	 * @return returns system I/O writes kB
 	 */
@@ -76,22 +76,22 @@ public interface SystemMetrics extends Metrics {
 	 * @return returns user cpu percentage
 	 */
 	public double getUserPerc();
-	
+
 	/**
 	 * @return returns system cpu percentage
 	 */
 	public double getSysPerc();
-	
+
 	/**
 	 * @return returns idle cpu percentage
 	 */
 	public double getIdlePerc();
-	
+
 	/**
 	 * @return returns wait cpu percentage
 	 */
 	public double getWaitPerc();
-	
+
 	/**
 	 * @return returns irq cpu percentage
 	 */
@@ -101,24 +101,49 @@ public interface SystemMetrics extends Metrics {
 	 * @return returns user cpu time
 	 */
 	public double getUser();
-	
+
 	/**
 	 * @return returns system cpu time
 	 */
 	public double getSys();
-	
+
 	/**
 	 * @return returns idle cpu time
 	 */
 	public double getIdle();
-	
+
 	/**
 	 * @return returns wait cpu time
 	 */
 	public double getWait();
-	
+
 	/**
 	 * @return returns irq cpu time
 	 */
 	public double getIrq();
+
+	/**
+	 * @return total number of processes
+	 */
+	public long getProcessesCount();
+
+	/**
+	 * @return total number of processes in run state
+	 */
+	public long getRunningProcessesCount();
+
+	/**
+	 * @return total number of threads
+	 */
+	public long getThreadsCount();
+
+	/**
+	 * @return the number of outbound tcp packets since last measurement
+	 */
+	public long getTcpOutbound();
+
+	/**
+	 * @return the number of inbound tcp packets since last measurement
+	 */
+	public long getTcpInbound();
 }
