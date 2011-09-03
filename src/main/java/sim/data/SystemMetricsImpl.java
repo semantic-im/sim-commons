@@ -59,7 +59,8 @@ public final class SystemMetricsImpl implements SystemMetrics {
 			long totalSystemUsedMemory, long totalSystemUsedSwap, long systemOpenFileDescriptors,
 			long swapIn, long swapOut, long ioRead, long ioWrite, double userPerc, double sysPerc,
 			double idlePerc, double waitPerc, double irqPerc, double user, double sys, double idle,
-			double wait, double irq) {
+			double wait, double irq, long processesCount, long runningProcessesCount, long threadsCount,
+			long tcpOutbound, long tcpInbound) {
 		this.creationTime = System.currentTimeMillis();
 		this.systemId = systemId;
 		this.systemLoadAverage = systemLoadAverage;
@@ -81,6 +82,11 @@ public final class SystemMetricsImpl implements SystemMetrics {
 		this.idle = idle;
 		this.wait = wait;
 		this.irq = irq;
+		this.processesCount = processesCount;
+		this.runningProcessesCount = runningProcessesCount;
+		this.threadsCount = threadsCount;
+		this.tcpInbound = tcpInbound;
+		this.tcpOutbound = tcpOutbound;
 	}
 
 	@Override
