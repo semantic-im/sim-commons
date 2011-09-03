@@ -241,8 +241,8 @@ public final class MethodMetricsImpl implements MethodMetrics {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MethodMetricsImpl [");
-		builder.append(method);
+		builder.append("MethodMetricsImpl [method=");
+		builder.append(method.getSignature());
 		builder.append(", wallClockTime=");
 		builder.append(wallClockTime);
 		builder.append(", processTotalCpuTime=");
@@ -283,16 +283,18 @@ public final class MethodMetricsImpl implements MethodMetrics {
 		builder.append(unallocatedMemoryBefore);
 		builder.append(", unallocatedMemoryAfter=");
 		builder.append(unallocatedMemoryAfter);
-		builder.append(", exception=");
-		builder.append(exception);
-		builder.append(", creationTime=");
-		builder.append(creationTime);
-		builder.append(", systemId=");
-		builder.append(systemId == null ? "null" : systemId.getId());
-		builder.append(", contextId=");
-		builder.append(contextId);
 		builder.append(", endedWithError=");
 		builder.append(endedWithError);
+		builder.append(", exception=");
+		builder.append(exception);
+		builder.append(", contextId=");
+		builder.append(contextId);
+		builder.append(", applicationId=");
+		builder.append(method.getApplicationId().getId());
+		builder.append(", systemId=");
+		builder.append(systemId == null ? "null" : systemId.getId());
+		builder.append(", creationTime=");
+		builder.append(creationTime);
 		builder.append(", beginExecutionTime=");
 		builder.append(beginExecutionTime);
 		builder.append(", endExecutionTime=");

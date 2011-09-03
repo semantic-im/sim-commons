@@ -27,13 +27,15 @@ public final class MethodImpl implements Method {
 
 	private ApplicationId applicationId;
 
-	private String methodName;
-	private String className;
+	private final String methodName;
+	private final String className;
+	private final String signature;
 
 	public MethodImpl(ApplicationId applicationId, String className, String methodName) {
 		this.applicationId = applicationId;
 		this.methodName = methodName;
 		this.className = className;
+		this.signature = className + "." + methodName.replace("<init>", "new");
 	}
 
 
@@ -63,6 +65,11 @@ public final class MethodImpl implements Method {
 		builder.append(className);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public String getSignature() {
+		return signature;
 	}
 
 }

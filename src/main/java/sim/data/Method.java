@@ -43,4 +43,9 @@ public interface Method extends Serializable {
 	 */
 	public String getClassName();
 
+	/**
+	 * @return full class name dot method name
+	 */
+	public String getSignature();
+
 }

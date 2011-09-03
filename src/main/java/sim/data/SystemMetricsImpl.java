@@ -333,7 +333,7 @@ public final class SystemMetricsImpl implements SystemMetrics {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SystemMetricsImpl [creationTime=");
 		builder.append(creationTime);
-		builder.append(", systemId=");
+		builder.append(", ");
 		builder.append(systemId);
 		builder.append(", systemLoadAverage=");
 		builder.append(systemLoadAverage);
