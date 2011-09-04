@@ -138,26 +138,24 @@ public interface SystemMetrics extends Metrics {
 	public long getThreadsCount();
 
 	/**
-	 * @return the number of current outbound tcp connections since last
-	 *         measurement
+	 * @return the number of current outbound tcp connections
 	 */
 	public long getTcpOutbound();
 
 	/**
-	 * @return the number of current inbound tcp connections since last
-	 *         measurement
+	 * @return the number of current inbound tcp connections
 	 */
 	public long getTcpInbound();
 
 	/**
 	 * @return the total number of bytes sent over all installed network
-	 *         interfaces except loopback since last measurement
+	 *         interfaces, except loopback, since last measurement
 	 */
 	public long getNetworkSent();
 
 	/**
 	 * @return the total number of bytes received over all installed network
-	 *         interfaces except loopback since last measurement
+	 *         interfaces, except loopback, since last measurement
 	 */
 	public long getNetworkReceived();
 
