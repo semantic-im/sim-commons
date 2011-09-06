@@ -30,8 +30,8 @@ package sim.data;
  * this method (user time + system time) (ms)</li>
  * <li>process total cpu time - total CPU time spent by current process (all
  * threads from the application) executing this method (ms)</li>
- * <li>thread count - how many threads did this method invocation create (count)
- * </li>
+ * <li>thread count - total number of threads that were started during this
+ * method execution (count)</li>
  * <li>thread block count - the total number of times that the current thread
  * executing this method entered the BLOCKED state (count)</li>
  * <li>thread block time - the total accumulated time the current thread
@@ -139,7 +139,8 @@ public interface MethodMetrics extends Metrics {
 	public long getThreadTotalCpuTime();
 
 	/**
-	 * @return how many threads did this method invocation create (count)
+	 * @return total number of threads that were started during this method
+	 *         execution (count)
 	 */
 	public long getThreadCount();
 
